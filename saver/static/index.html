@@ -1,0 +1,78 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: GPL-3.0-only; Copyright (C) 2026 konijiwa286 -->
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="app-token" content="__APP_TOKEN__">
+  <meta name="color-scheme" content="light dark">
+  <title>转存工作台 · PikPak 链接转存助手</title>
+  <link rel="icon" href="/static/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/vendor/tabler.min.css">
+  <link rel="stylesheet" href="/static/app.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <svg class="icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h5l2 3h7a2 2 0 0 1 2 2v9H3Z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m7 12 3 3 7-7"/><circle cx="12" cy="12" r="9"/></symbol>
+    <symbol id="i-transfer" viewBox="0 0 24 24"><path d="M4 7h15m-4-4 4 4-4 4M20 17H5m4-4-4 4 4 4"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="m12 3 10 18H2L12 3Z M12 9v5m0 3h.01"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="8" cy="6" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="9" cy="18" r="2"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3 2.5c-.5.2-.5 1-.5 1.5m0 3h.01"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="m9 15 6-6m-7 8-1 1a4 4 0 0 1-6-6l4-4a4 4 0 0 1 6 0m2 2 1-1a4 4 0 0 1 6 6l-4 4a4 4 0 0 1-6 0" transform="translate(1 -1)"/></symbol>
+    <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18H6a4 4 0 0 1-1-8 7 7 0 0 1 13-3 5.5 5.5 0 0 1 0 11h-1m-5-5v9m-3-3 3 3 3-3"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14A8.5 8.5 0 0 1 10 4a8.5 8.5 0 1 0 10 10Z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="i-power" viewBox="0 0 24 24"><path d="M12 2v10m-5-7a9 9 0 1 0 10 0"/></symbol>
+  </svg>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <aside class="sidebar" aria-label="主导航">
+    <a class="brand" href="#overview" aria-label="PikPak 链接转存助手首页"><img src="/static/icon.svg" alt="" width="38" height="38"><span>PikPak<span class="brand-subtitle">链接转存助手</span></span></a>
+    <nav class="nav-menu">
+      <a id="nav-overview" class="nav-item current" href="#overview" aria-label="转存工作台" aria-current="page"><svg class="icon" aria-hidden="true"><use href="#i-grid"/></svg><span>转存工作台</span></a>
+      <button id="nav-tasks" class="nav-item" type="button" aria-label="全部任务"><svg class="icon" aria-hidden="true"><use href="#i-folder"/></svg><span>全部任务</span><span id="nav-total" class="nav-count">—</span></button>
+      <button id="nav-attention" class="nav-item" type="button" aria-label="需要处理"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span>需要处理</span><span id="nav-attention-count" class="nav-count">—</span></button>
+    </nav>
+    <div class="sidebar-bottom">
+      <button id="nav-settings" class="nav-item" type="button" aria-label="网络设置"><svg class="icon" aria-hidden="true"><use href="#i-settings"/></svg><span>网络设置</span></button>
+      <button id="nav-guide" class="nav-item" type="button" aria-label="使用指南"><svg class="icon" aria-hidden="true"><use href="#i-help"/></svg><span>使用指南</span></button>
+    </div>
+  </aside>
+  <div class="app-shell">
+    <header class="topbar"><div class="app-status"><span id="service-dot" class="status-dot"></span><span id="service-label">正在连接</span></div><div class="topbar-actions"><button id="theme-toggle" class="icon-button" type="button" aria-label="切换到深色模式" title="切换外观"><svg class="icon" aria-hidden="true"><use id="theme-icon" href="#i-moon"/></svg></button><button id="exit-app" class="icon-button" type="button" aria-label="退出程序" title="退出程序"><svg class="icon" aria-hidden="true"><use href="#i-power"/></svg></button></div></header>
+    <main id="main" class="page-content">
+      <div id="message" class="alert" role="status" aria-live="polite" hidden></div>
+      <section id="overview" class="page-heading"><div><h1>转存工作台</h1><p>批量保存公开链接到 PikPak。</p></div></section>
+      <section class="stats-grid" aria-label="任务统计">
+        <div class="stat"><span class="stat-label">全部文件<svg class="icon" aria-hidden="true"><use href="#i-folder"/></svg></span><strong id="count-total">—</strong></div>
+        <div class="stat"><span class="stat-label">进行中<svg class="icon" aria-hidden="true"><use href="#i-transfer"/></svg></span><strong id="count-active">—</strong><small><span id="count-waiting">—</span> 个等待提交</small></div>
+        <div class="stat stat-success"><span class="stat-label">已完成<svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><strong id="count-verified">—</strong></div>
+        <div class="stat stat-warning"><span class="stat-label">需处理<svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg></span><strong id="count-attention">—</strong></div>
+      </section>
+      <div class="workspace-grid">
+        <section class="card input-card" aria-labelledby="input-heading">
+          <div class="card-header"><div class="section-title"><span class="section-icon"><svg class="icon" aria-hidden="true"><use href="#i-link"/></svg></span><h2 id="input-heading" class="card-title">添加链接</h2></div><button id="clear-links" class="text-button" type="button" hidden>清空</button></div>
+          <div class="card-body">
+            <label for="links" class="visually-hidden">公开链接</label>
+            <div class="link-editor"><textarea id="links" class="form-control" rows="5" placeholder="粘贴公开链接，每行一条。&#10;支持 Markdown 列表。" spellcheck="false" aria-describedby="input-hint input-state"></textarea><div id="input-hint" class="source-types"><span><i class="source-dot bunkr"></i>Bunkr</span><span><i class="source-dot balbums"></i>Balbums</span><span><i class="source-dot yandex"></i>Yandex</span></div></div>
+            <div class="input-actions"><label class="form-check form-switch"><input id="auto-start" class="form-check-input" type="checkbox" checked disabled><span class="form-check-label">粘贴后自动开始</span></label><button id="start" class="btn btn-primary" type="button" disabled>开始转存<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button></div>
+            <div class="input-footer"><p id="input-state" class="form-hint" aria-live="polite">等待粘贴链接</p><span class="keyboard-hint"><kbd>Ctrl</kbd><span>+</span><kbd>Enter</kbd></span></div>
+          </div>
+        </section>
+        <aside class="workspace-aside">
+          <section class="card account-card" aria-labelledby="account-heading"><div class="card-body"><div class="account-top"><span class="account-icon"><svg class="icon" aria-hidden="true"><use href="#i-cloud"/></svg></span><span id="connection" class="badge bg-secondary-lt" hidden></span></div><h2 id="account-heading" class="mini-heading">PikPak 账户</h2><div id="account-name" class="account-name">正在恢复连接…</div><p id="account-error" class="text-secondary">正在检查已保存的授权。</p><button id="auth-start" class="btn btn-outline-primary" type="button" hidden>连接 PikPak</button><div id="device" class="device-box" hidden><p>在官方授权页输入设备码</p><div class="device-code-row"><strong id="device-code"></strong><button id="copy-code" class="btn btn-sm" type="button">复制</button></div><a id="device-url" class="btn btn-primary" target="_blank" rel="noopener noreferrer">打开授权页</a><p id="device-expiry" class="form-hint"></p></div><div class="root-row"><label for="root-name" class="form-label">保存目录</label><div class="input-with-icon"><svg class="icon" aria-hidden="true"><use href="#i-folder"/></svg><input id="root-name" class="form-control" value="链接转存" maxlength="240" autocomplete="off" disabled></div><p class="form-hint">按合集及图片 / 视频自动归档。</p></div></div></section>
+        </aside>
+      </div>
+      <section id="tasks" class="card tasks-card" aria-labelledby="tasks-heading"><div class="card-header tasks-header"><div><h2 id="tasks-heading" class="card-title">转存任务</h2><div id="bytes-progress" class="form-hint">正在读取进度</div></div><div class="toolbar"><button id="pause" class="btn btn-sm" type="button" disabled>暂停新提交</button><button id="retry" class="btn btn-sm" type="button" disabled>重试失败项</button></div></div><div class="task-controls"><div class="view-tabs" role="group" aria-label="显示任务"><button class="view-tab active" id="view-groups" type="button" aria-pressed="true">合集<span id="groups-count">0</span></button><button class="view-tab" id="view-batches" type="button" aria-pressed="false">批次<span id="batches-count">0</span></button><button class="view-tab" id="view-attention" type="button" aria-pressed="false">需处理<span id="attention-count">0</span></button></div><div class="task-search"><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg><label class="visually-hidden" for="task-search">搜索当前视图的任务</label><input id="task-search" type="search" placeholder="搜索任务…" autocomplete="off"></div></div><div class="tasks-body"><p id="pause-note" class="pause-note" hidden>已暂停新提交，已提交的云端任务仍会继续。</p><div id="task-list" aria-live="polite"><div class="empty-state"><strong>正在读取任务</strong></div></div><div id="task-pagination" class="task-pagination" hidden><span id="task-visible-count"></span><button id="load-more" class="btn btn-sm" type="button">再显示 100 项</button></div></div></section>
+      <details class="card settings-card" id="settings"><summary class="card-header"><div class="section-title"><svg class="icon" aria-hidden="true"><use href="#i-settings"/></svg><h2 class="card-title">网络设置</h2></div><svg class="icon disclosure-icon" aria-hidden="true"><use href="#i-chevron"/></svg></summary><div class="card-body settings-grid"><form id="settings-form"><label for="proxy" class="form-label">HTTP(S) 代理</label><input id="proxy" class="form-control" type="url" placeholder="留空继承启动时的代理" autocomplete="off" aria-describedby="proxy-help" disabled><p id="proxy-help" class="form-hint">例如 http://127.0.0.1:7890，不接受账号或密码。</p><div class="relay-setting"><label class="form-check form-switch"><input id="local-relay" class="form-check-input" type="checkbox" disabled><span class="form-check-label">云下载失败时允许本机中转</span></label><p class="form-hint">会使用本机网络和磁盘，云端确认后清理临时副本。</p></div><button class="btn btn-primary" id="save-settings" type="submit" disabled>保存设置</button></form></div></details>
+      <footer><span>关闭最后一个程序页面后，后台自动退出。</span><div class="footer-actions"><button id="mobile-settings" class="text-button" type="button">设置</button><button id="mobile-guide" class="text-button" type="button">使用指南</button></div></footer>
+    </main>
+  </div>
+  <dialog id="guide-dialog" aria-labelledby="guide-heading"><form method="dialog"><button class="dialog-close icon-button" aria-label="关闭使用指南">×</button></form><h2 id="guide-heading">使用指南</h2><ol class="guide-steps"><li><strong>连接 PikPak</strong><p>首次使用时在官方授权页输入设备码，以后启动自动恢复。</p></li><li><strong>粘贴链接</strong><p>支持批量和 Markdown。也可按 Ctrl + Enter 提交。</p></li><li><strong>查看任务</strong><p>按合集或批次查看进度，失败与待核对项目在“需处理”中。</p></li></ol><p class="guide-note">关闭最后一个页面后自动退出，重新启动会恢复本机任务。已提交给 PikPak 的云下载可能继续进行。</p></dialog>
+</body>
+</html>
